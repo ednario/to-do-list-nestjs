@@ -21,10 +21,11 @@
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
     "paths": {
-      "@app/*": ["./src/app/*"],
+      "@tasks/*": ["src/modules/tasks/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@infra/*": ["./src/infra/*"],
-      "@test/*": ["./test/*"]
+      "@test/*": ["./test/*"],
+      "@errors/*": ["./src/errors/*"]
     }
   }
 }
