@@ -14,7 +14,6 @@ describe('Canceled Task', () => {
     await completedTask.execute({
       taskId: task.id,
     });
-    console.log(taskRepository.tasks[0].completed);
 
     expect(taskRepository.tasks[0].completed).toEqual(true);
   });
