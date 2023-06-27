@@ -6,10 +6,10 @@ import { Title } from '@tasks/entities/Title';
 import { TaskRepository } from '@tasks/repositories/TaskRepository';
 
 interface CreateTaskRequest {
-  title: Title;
-  description: Description;
+  title: string;
+  description: string;
   completed?: boolean;
-  dueDate?: Date | null;
+  // dueDate?: Date | null;
 }
 
 interface CreateTaskResponse {
@@ -23,7 +23,10 @@ export class CreateTaskUseCase {
   async execute(request: CreateTaskRequest): Promise<CreateTaskResponse> {
     const { title, description } = request;
 
-    const task = new Task({ title, description });
+    const task = new Task({
+      title: new Title(title),
+      description: new Description(description),
+    });
 
     await this.taskRepository.create(task);
 
