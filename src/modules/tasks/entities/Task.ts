@@ -8,7 +8,7 @@ import { Replace } from '@helpers/Replace';
 export interface TaskProps {
   title: Title;
   description: Description;
-  completed?: boolean;
+  completed?: boolean | null;
   // dueDate?: Date | null;
   createdAt: Date;
 }
