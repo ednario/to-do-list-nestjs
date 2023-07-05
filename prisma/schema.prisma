@@ -16,4 +16,13 @@ model Task {
   description String
   completed   Boolean?
   createdAt   DateTime
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime
+  tasks     Task[]
 }

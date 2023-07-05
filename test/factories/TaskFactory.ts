@@ -9,6 +9,7 @@ export function makeTask(override: Override = {}) {
     title: new Title('Passeio'),
     description: new Description('Lever os cães para o passeio'),
     // dueDate: new Date('December 17, 2023 03:24:00'),
+    authorId: 'edwqsdfgdfgdf',
     ...override,
   });
   return task;

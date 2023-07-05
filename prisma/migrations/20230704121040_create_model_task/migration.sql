@@ -3,6 +3,7 @@ CREATE TABLE "Task" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "completed" BOOLEAN NOT NULL,
-    "createdAt" DATETIME NOT NULL
+    "completed" BOOLEAN,
+    "createdAt" DATETIME NOT NULL,
+    "authorId" TEXT NOT NULL
 );

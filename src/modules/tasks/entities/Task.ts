@@ -9,6 +9,7 @@ export interface TaskProps {
   title: Title;
   description: Description;
   completed?: boolean | null;
+  authorId: string;
   // dueDate?: Date | null;
   createdAt: Date;
 }
@@ -52,6 +53,14 @@ export class Task {
 
   public completedTask() {
     this.props.completed = true;
+  }
+
+  public get authorId(): string {
+    return this.props.authorId;
+  }
+
+  public set authorId(authorId: string) {
+    this.props.authorId = authorId;
   }
 
   // public get dueDate() {

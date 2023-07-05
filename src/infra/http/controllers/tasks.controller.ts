@@ -14,16 +14,17 @@ export class TasksController {
   async listAll() {
     const tasks = await this.list.listAll();
 
-    return tasks ;
+    return tasks;
   }
 
   @Post()
   async create(@Body() body: CreateTaskBody) {
-    const { title, description } = body;
+    const { title, description, authorId } = body;
 
     const { task } = await this.createTask.execute({
       title,
       description,
+      authorId,
     });
 
     return TaskViewModel.toHTTP(task);

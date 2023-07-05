@@ -10,6 +10,7 @@ export class PrismaTaskMapper {
       title: task.title.value,
       description: task.description.value,
       completed: task.completed,
+      authorId: task.authorId,
       createdAt: task.createdAt,
     };
   }
@@ -20,6 +21,7 @@ export class PrismaTaskMapper {
         title: new Title(raw.title),
         description: new Description(raw.description),
         completed: raw.completed,
+        authorId: raw.authorId,
         createdAt: raw.createdAt,
       },
       raw.id,

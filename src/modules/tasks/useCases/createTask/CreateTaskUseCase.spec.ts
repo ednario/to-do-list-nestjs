@@ -9,7 +9,10 @@ describe('Create Task', () => {
     const { task } = await createTask.execute({
       title: 'Passeio',
       description: 'Lever os cães para o passeio',
+      authorId: 'inuifbnuogfovdfvfvdvdvddghnim',
     });
+
+    console.log(task);
 
     expect(taskRepository.tasks).toHaveLength(1);
     expect(taskRepository.tasks[0]).toEqual(task);

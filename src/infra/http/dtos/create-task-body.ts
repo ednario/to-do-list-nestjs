@@ -8,4 +8,7 @@ export class CreateTaskBody {
   @IsNotEmpty()
   @Length(1, 50)
   description: string;
+
+  @IsNotEmpty()
+  authorId: string;
 }

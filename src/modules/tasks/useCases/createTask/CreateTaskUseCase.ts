@@ -9,6 +9,7 @@ interface CreateTaskRequest {
   title: string;
   description: string;
   completed?: boolean;
+  authorId: string;
   // dueDate?: Date | null;
 }
 
@@ -21,11 +22,12 @@ export class CreateTaskUseCase {
   constructor(private taskRepository: TaskRepository) {}
 
   async execute(request: CreateTaskRequest): Promise<CreateTaskResponse> {
-    const { title, description } = request;
+    const { title, description, authorId } = request;
 
     const task = new Task({
       title: new Title(title),
       description: new Description(description),
+      authorId: authorId,
     });
 
     await this.taskRepository.create(task);
