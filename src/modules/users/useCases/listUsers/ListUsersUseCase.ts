@@ -3,7 +3,7 @@ import { User } from '@users/entities/User';
 import { UserRepository } from '@users/repositories/UserRepository';
 
 @Injectable()
-export class ListUsers {
+export class ListUsersUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async listAll(): Promise<Array<User>> {

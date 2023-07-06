@@ -1,14 +1,17 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 
 import { CreateTaskUseCase } from '@tasks/useCases/createTask/CreateTaskUseCase';
-import { ListTasks } from '@tasks/useCases/listTasks/ListTasksUseCase';
+import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
 
 import { CreateTaskBody } from '@infra/http/dtos/create-task-body';
 import { TaskViewModel } from '@infra/http/view-models/task-view-model';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(private createTask: CreateTaskUseCase, private list: ListTasks) {}
+  constructor(
+    private createTask: CreateTaskUseCase,
+    private list: ListTasksUseCase,
+  ) {}
 
   @Get()
   async listAll() {
