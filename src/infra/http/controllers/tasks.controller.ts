@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { CreateTaskUseCase } from '@tasks/useCases/createTask/CreateTaskUseCase';
 import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
@@ -6,6 +7,7 @@ import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
 import { CreateTaskBody } from '@infra/http/dtos/create-task-body';
 import { TaskViewModel } from '@infra/http/view-models/task-view-model';
 
+@ApiTags('tasks')
 @Controller('tasks')
 export class TasksController {
   constructor(
