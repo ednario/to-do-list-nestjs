@@ -12,11 +12,11 @@ export class TaskRepositoryInMemory implements TaskRepository {
     return this.tasks;
   }
 
-  async findById(taskId: string): Promise<Task | null> {
+  async findById(taskId: string): Promise<Task> {
     const task = this.tasks.find((item) => item.id === taskId);
 
     if (!task) {
-      return null;
+      throw 'Task is not exists';
     }
 
     return task;
@@ -28,5 +28,11 @@ export class TaskRepositoryInMemory implements TaskRepository {
     if (taskIndex >= 0) {
       this.tasks[taskIndex];
     }
+  }
+
+  async delete(taskId: string): Promise<void> {
+    const task = await this.findById(taskId);
+
+    this.tasks.splice(1, 1, task);
   }
 }
