@@ -16,8 +16,6 @@ describe('Create Task', () => {
 
     await deleteTask.execute(task.id);
 
-    console.log(`Id: ${task.id}`);
-
     // it was post toHaveLength(2) because it has completed and create UseCases
     expect(taskRepository.tasks).toHaveLength(2);
   });
