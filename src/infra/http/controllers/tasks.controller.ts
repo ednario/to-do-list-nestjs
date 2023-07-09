@@ -1,12 +1,21 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { CreateTaskUseCase } from '@tasks/useCases/createTask/CreateTaskUseCase';
 import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
+import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase';
+import { CompletedTaskUseCase } from '@tasks/useCases/completedTask/CompletedTaskUseCase';
 
 import { CreateTaskBody } from '@infra/http/dtos/create-task-body';
 import { TaskViewModel } from '@infra/http/view-models/task-view-model';
-import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase';
 
 @ApiTags('tasks')
 @Controller('tasks')
@@ -15,6 +24,7 @@ export class TasksController {
     private createTask: CreateTaskUseCase,
     private list: ListTasksUseCase,
     private deleteTask: DeleteTaskUseCase,
+    private completedTask: CompletedTaskUseCase,
   ) {}
 
   @Get()
@@ -37,8 +47,15 @@ export class TasksController {
     return TaskViewModel.toHTTP(task);
   }
 
-  @Delete(':id')
+  @Patch(':id')
   async delete(@Param('id') id: string) {
     await this.deleteTask.execute(id);
+  }
+
+  @Patch('/completed/:id')
+  async completed(@Param('id') id: string) {
+    await this.completedTask.execute({
+      taskId: id,
+    });
   }
 }

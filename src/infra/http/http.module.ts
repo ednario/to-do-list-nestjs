@@ -10,6 +10,7 @@ import { UsersController } from '@infra/http/controllers/users.controller';
 import { CreateUserUseCase } from '@users/useCases/createUser/CreateUserUseCase';
 import { ListUsersUseCase } from '@users/useCases/listUsers/ListUsersUseCase';
 import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase';
+import { CompletedTaskUseCase } from '@tasks/useCases/completedTask/CompletedTaskUseCase';
 
 @Module({
   imports: [DatabaseModule],
@@ -20,6 +21,7 @@ import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase'
     DeleteTaskUseCase,
     CreateUserUseCase,
     ListUsersUseCase,
+    CompletedTaskUseCase,
   ],
 })
 export class HttpModule {}

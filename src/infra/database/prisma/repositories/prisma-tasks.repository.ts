@@ -22,11 +22,29 @@ export class PrismaTaskRepository implements TaskRepository {
     return await this.prisma.task.findMany();
   }
 
-  findById(taskId: string): Promise<Task | null> {
-    throw new Error('Method not implemented.');
+  async findById(taskId: string): Promise<Task | null> {
+    const task = await this.prisma.task.findUnique({
+      where: {
+        id: taskId,
+      },
+    });
+
+    if (!task) {
+      return null;
+    }
+
+    return PrismaTaskMapper.toDomain(task);
   }
-  save(task: Task): Promise<void> {
-    throw new Error('Method not implemented.');
+
+  async save(task: Task): Promise<void> {
+    const raw = PrismaTaskMapper.toPrisma(task);
+
+    await this.prisma.task.update({
+      where: {
+        id: raw.id,
+      },
+      data: raw,
+    });
   }
 
   async delete(taskId: string): Promise<void> {
