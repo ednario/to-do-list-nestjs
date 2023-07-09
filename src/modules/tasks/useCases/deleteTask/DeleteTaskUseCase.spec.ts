@@ -2,8 +2,8 @@ import { TaskRepositoryInMemory } from '@test/repositories/TaskRepositoryInMemor
 import { CreateTaskUseCase } from '../createTask/CreateTaskUseCase';
 import { DeleteTaskUseCase } from './DeleteTaskUseCase';
 
-describe('Create Task', () => {
-  it('should be able to create a task', async () => {
+describe('Delete Task', () => {
+  it('should be able to delete a task', async () => {
     const taskRepository = new TaskRepositoryInMemory();
     const createTask = new CreateTaskUseCase(taskRepository);
     const deleteTask = new DeleteTaskUseCase(taskRepository);
