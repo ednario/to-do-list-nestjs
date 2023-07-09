@@ -1,11 +1,11 @@
 import { TaskRepositoryInMemory } from '@test/repositories/TaskRepositoryInMemory';
-import { completedTaskUseCase } from './CompletedTaskUseCase';
+import { CompletedTaskUseCase } from './CompletedTaskUseCase';
 import { makeTask } from '@test/factories/TaskFactory';
 
 describe('Canceled Task', () => {
   it('should be able to unread a task', async () => {
     const taskRepository = new TaskRepositoryInMemory();
-    const completedTask = new completedTaskUseCase(taskRepository);
+    const completedTask = new CompletedTaskUseCase(taskRepository);
 
     const task = makeTask();
 

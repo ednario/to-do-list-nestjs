@@ -10,7 +10,7 @@ interface CompletedTaskRequest {
 type CompletedTaskResponse = void;
 
 @Injectable()
-export class completedTaskUseCase {
+export class CompletedTaskUseCase {
   constructor(private taskRepository: TaskRepository) {}
 
   async execute(request: CompletedTaskRequest): Promise<CompletedTaskResponse> {
