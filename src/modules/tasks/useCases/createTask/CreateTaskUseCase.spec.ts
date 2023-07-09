@@ -12,8 +12,6 @@ describe('Create Task', () => {
       authorId: 'inuifbnuogfovdfvfvdvdvddghnim',
     });
 
-    console.log(task);
-
     expect(taskRepository.tasks).toHaveLength(1);
     expect(taskRepository.tasks[0]).toEqual(task);
   });
