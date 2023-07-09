@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { CreateTaskUseCase } from '@tasks/useCases/createTask/CreateTaskUseCase';
@@ -6,6 +6,7 @@ import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
 
 import { CreateTaskBody } from '@infra/http/dtos/create-task-body';
 import { TaskViewModel } from '@infra/http/view-models/task-view-model';
+import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase';
 
 @ApiTags('tasks')
 @Controller('tasks')
@@ -13,6 +14,7 @@ export class TasksController {
   constructor(
     private createTask: CreateTaskUseCase,
     private list: ListTasksUseCase,
+    private deleteTask: DeleteTaskUseCase,
   ) {}
 
   @Get()
@@ -33,5 +35,10 @@ export class TasksController {
     });
 
     return TaskViewModel.toHTTP(task);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    await this.deleteTask.execute(id);
   }
 }

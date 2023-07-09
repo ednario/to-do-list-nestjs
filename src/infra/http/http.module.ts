@@ -9,6 +9,7 @@ import { ListTasksUseCase } from '@tasks/useCases/listTasks/ListTasksUseCase';
 import { UsersController } from '@infra/http/controllers/users.controller';
 import { CreateUserUseCase } from '@users/useCases/createUser/CreateUserUseCase';
 import { ListUsersUseCase } from '@users/useCases/listUsers/ListUsersUseCase';
+import { DeleteTaskUseCase } from '@tasks/useCases/deleteTask/DeleteTaskUseCase';
 
 @Module({
   imports: [DatabaseModule],
@@ -16,6 +17,7 @@ import { ListUsersUseCase } from '@users/useCases/listUsers/ListUsersUseCase';
   providers: [
     CreateTaskUseCase,
     ListTasksUseCase,
+    DeleteTaskUseCase,
     CreateUserUseCase,
     ListUsersUseCase,
   ],
