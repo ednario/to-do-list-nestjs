@@ -47,7 +47,7 @@ export class TasksController {
     return TaskViewModel.toHTTP(task);
   }
 
-  @Patch(':id')
+  @Delete(':id')
   async delete(@Param('id') id: string) {
     await this.deleteTask.execute(id);
   }
