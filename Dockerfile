@@ -5,10 +5,10 @@ WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm install
-
 COPY . .
+
+RUN npm install
 
 EXPOSE 3000
 
-CMD ["npx", "prisma", "migrate", "dev", "&&", "npm", "run", "start:dev"]
+CMD ["npm", "run", "start:dev"]
